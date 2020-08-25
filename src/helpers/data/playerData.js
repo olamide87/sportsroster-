@@ -3,7 +3,7 @@ import apiKeys from '../apiKeys.json';
 
 import utils from '../utils';
 
-const baseUrl = apiKeys.firebaseConfig.databaseURL;
+const baseUrl = apiKeys.firebaseKeys.databaseURL;
 
 const getPlayersByUId = (uid) => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/players.json?orderBy="uid"&equalTo="${uid}"`)
