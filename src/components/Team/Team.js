@@ -5,7 +5,7 @@ import Player from '../Player/Player';
 import './Team.scss';
 
 class Team extends React.Component {
-  static ropTypes = {
+  static propTypes = {
     uid: PropTypes.string.isRequired,
   }
 
@@ -15,7 +15,7 @@ class Team extends React.Component {
 
   updatePlayers = () => {
     const { uid } = this.props;
-    playerData.getPlayersByUId(uid)
+    playerData.getPlayersByUid(uid)
       .then((players) => this.setState({ players }))
       .catch((err) => console.error(err));
   }
