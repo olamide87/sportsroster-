@@ -5,7 +5,7 @@ import './Player.scss';
 
 class Player extends React.Component {
   static propTypes = {
-    player: playerShape.playerShape,
+    player: playerShape.teamShape,
     deletePlayer: PropTypes.func.isRequired,
   }
 
@@ -26,7 +26,7 @@ class Player extends React.Component {
           <p className="card-text">{player.position}</p>
         </div>
         <div className="card-footer">
-          <i className="fas fa-trash-alt" onClick={this.deletePlayerEvent}></i>
+        <i className="fas fa-trash-alt" onClick={this.deletePlayerEvent}></i>
           <i className="fas fa-edit"></i>
         </div>
       </div>

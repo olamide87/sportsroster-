@@ -24,9 +24,17 @@ class Team extends React.Component {
     this.updatePlayers();
   }
 
+  deletePlayer = (playerId) => {
+    playerData.deletePlayer(playerId)
+      .then(() => {
+        this.updatePlayers();
+      })
+      .catch((err) => console.error('Delete player failed', err));
+  }
+
   render() {
     const { players } = this.state;
-    const playerCard = players.map((player) => <Player key={player.id} player={player} />);
+    const playerCard = players.map((player) => <Player key={player.id} player={player} deletePlayer={this.deletePlayer} />);
 
     return (
       <div>
