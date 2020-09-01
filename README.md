@@ -10,7 +10,7 @@ Main app view:
 
 Form used to add or update a player depending on the button clicked:
 
-![player form screenshot](https://i.imgur.com/3Q4Dsql.png)
+![player form screenshot](https://i.imgur.com/RrI37Ab.png)
 
 ## How to run
 1. Clone this repo
