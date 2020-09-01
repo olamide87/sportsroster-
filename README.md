@@ -6,11 +6,11 @@ This project was one of the first applications I built using React. After a user
 ## Screenshots
 Main app view:
 
-![main project view](./screenshots/main-view.png)
+![main project view](https://i.imgur.com/3Q4Dsql.png)
 
 Form used to add or update a player depending on the button clicked:
 
-![player form screenshot](./screenshots/form.png)
+![player form screenshot](https://i.imgur.com/3Q4Dsql.png)
 
 ## How to run
 1. Clone this repo
