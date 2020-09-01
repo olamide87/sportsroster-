@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import playerData from '../../helpers/data/playerData';
 import Player from '../Player/Player';
 import PlayerForm from '../PlayerForm/PlayerForm';
-
 import './Team.scss';
 
 class Team extends React.Component {
@@ -18,7 +16,7 @@ class Team extends React.Component {
     editPlayer: {},
   }
 
-  updatePlayers = () => {
+  getPlayers = () => {
     const { uid } = this.props;
     playerData.getPlayersByUid(uid)
       .then((players) => this.setState({ players }))
@@ -26,13 +24,13 @@ class Team extends React.Component {
   }
 
   componentDidMount() {
-    this.updatePlayers();
+    this.getPlayers();
   }
 
   deletePlayer = (playerId) => {
     playerData.deletePlayer(playerId)
       .then(() => {
-        this.updatePlayers();
+        this.getPlayers();
       })
       .catch((err) => console.error('Delete player failed', err));
   }
@@ -41,13 +39,22 @@ class Team extends React.Component {
     playerData.createPlayer(newPlayer)
       .then(() => {
         this.getPlayers();
-        this.setState({ formOpen: false });
+        this.setState();
       })
-      .catch((err) => console.error('Create Player Broke', err));
+      .catch((err) => console.error('Create player failed', err));
   }
 
   editAPlayer = (playerToEdit) => {
     this.setState({ formOpen: true, editPlayer: playerToEdit });
+  }
+
+  updatePlayer = (playerId, editedPlayer) => {
+    playerData.editPlayer(playerId, editedPlayer)
+      .then(() => {
+        this.getPlayers();
+        this.setState({ formOpen: false, editPlayer: {} });
+      })
+      .catch((err) => console.error(err));
   }
 
   closeForm = () => {
@@ -55,8 +62,8 @@ class Team extends React.Component {
   }
 
   render() {
-    const { players, formOpen } = this.state;
-    const playerCard = players.map((player) => <Player key={player.id} player={player} deletePlayer={this.deletePlayer} />);
+    const { players, formOpen, editPlayer } = this.state;
+    const playerCard = players.map((player) => <Player key={player.id} player={player} deletePlayer={this.deletePlayer} editAPlayer={this.editAPlayer}/>);
 
     return (
       <div>
